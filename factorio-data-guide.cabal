@@ -17,12 +17,15 @@ extra-source-files:  ChangeLog.md, README.md
 cabal-version:       >=1.10
 
 library
-  -- exposed-modules:
+  exposed-modules:    Game.FactorioData.Types
+                    , Game.FactorioData.Calc.Types
   -- other-modules:
   -- other-extensions:
-  build-depends:       base >=4.11 && <4.12
-  hs-source-dirs:      src
-  default-language:    Haskell2010
+  build-depends:      base >=4.11 && <4.12
+                    , unordered-containers
+                    , data-default
+  hs-source-dirs:     src
+  default-language:   Haskell2010
 
 executable factorio-data-guide
   main-is:             Main.hs
