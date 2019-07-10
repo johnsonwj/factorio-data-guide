@@ -1,10 +1,10 @@
+cabal-version:       2.4
 
 name:                factorio-data-guide
 version:             0.1.0.0
 synopsis:            Data library and calculators for Factorio
 -- description:
 homepage:            https://github.com/johnsonwj/factorio-data-guide
-license:             BSD3
 license-file:        LICENSE
 author:              William Johnson
 maintainer:          package-maintainer@willj.dev
@@ -12,10 +12,18 @@ copyright:           2019 William Johnson
 category:            Game
 build-type:          Simple
 extra-source-files:  ChangeLog.md, README.md
-cabal-version:       >=1.10
+
+common opts
+  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints
+
+common exts
+  default-extensions:  OverloadedStrings
 
 library
+  import: opts, exts
   exposed-modules:    Game.FactorioData.Types
+                    , Game.FactorioData.Calc
+                    , Game.FactorioData.Calc.Manifest
                     , Game.FactorioData.Calc.Types
   -- other-modules:
   -- other-extensions:
@@ -24,15 +32,15 @@ library
                     , data-default
                     , recursion-schemes
                     , text
+                    , mtl
   hs-source-dirs:     src
   default-language:   Haskell2010
-  default-extensions:  OverloadedStrings
 
 executable factorio-data-guide
+  import: opts, exts
   main-is:             Main.hs
   -- other-modules:
   -- other-extensions:
   build-depends:       base
   hs-source-dirs:      src
   default-language:    Haskell2010
-  default-extensions:  OverloadedStrings
