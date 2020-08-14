@@ -1,6 +1,5 @@
 module Game.FactorioData.Calc.Manifest where
 
-import Control.Monad.Reader
 import Data.Functor.Foldable
 
 import Game.FactorioData.Types

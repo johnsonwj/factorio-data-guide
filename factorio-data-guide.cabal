@@ -14,25 +14,28 @@ build-type:          Simple
 extra-source-files:  ChangeLog.md, README.md
 
 common opts
-  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints
+  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -fplugin=Polysemy.Plugin -flate-specialise -fspecialise-aggressively
 
 common exts
-  default-extensions:  OverloadedStrings
+  default-extensions:  OverloadedStrings, GADTs, DataKinds, FlexibleContexts, LambdaCase, PolyKinds, RankNTypes, ScopedTypeVariables, TypeApplications, TypeOperators, TypeFamilies
 
 library
   import: opts, exts
-  exposed-modules:    Game.FactorioData.Types
-                    , Game.FactorioData.Calc
-                    , Game.FactorioData.Calc.Manifest
-                    , Game.FactorioData.Calc.Types
+  exposed-modules: Game.FactorioData.Foo
+  -- exposed-modules:    Game.FactorioData.Types
+  --                   , Game.FactorioData.Calc
+  --                   , Game.FactorioData.Calc.Manifest
+  --                   , Game.FactorioData.Calc.Types
   -- other-modules:
   -- other-extensions:
   build-depends:      base
                     , unordered-containers
                     , data-default
                     , recursion-schemes
+                    , data-fix
                     , text
-                    , mtl
+                    , polysemy
+                    , polysemy-plugin
   hs-source-dirs:     src
   default-language:   Haskell2010
 

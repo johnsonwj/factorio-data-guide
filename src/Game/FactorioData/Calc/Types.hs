@@ -1,15 +1,15 @@
 module Game.FactorioData.Calc.Types where
 
-import Control.Monad.Reader
 import Data.Default
 import Data.HashMap.Strict
 import Data.Text hiding (empty)
+import Polysemy.Reader
 
 import Game.FactorioData.Types
 
 -- maybe also a Writer to debug a chained calculation?
 -- (in the vein of GHC's "in the second argument of... in the expression... in an equation for...")
-type FactorioCalc a = Reader FactoryConfig (Either FactorioCalcError a)
+type FactorioCalc m a = Reader FactoryConfig m (Either FactorioCalcError a)
 type FactorioCalcError = Text
 
 data FactoryConfig = FactoryConfig  { factorioData :: FactorioData
